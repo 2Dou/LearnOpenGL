@@ -22,5 +22,8 @@ class Shader;  // 编译&链接 glsl，设置 uniform
     /util/  几个辅助函数代码
 /include/  头文件
 /lib/  库文件
+/Resources/
+    /shaders/  glsl 文件
+    /texture/  图片资源
 ```
 
