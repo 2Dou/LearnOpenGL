@@ -1,0 +1,9 @@
+xcdebugger/
+*xcuserdatad/
+*xcworkspace/
+
+openglTest.0.0.1
+openglTest.0.0.1.exe
+build/
+
+*.zip
