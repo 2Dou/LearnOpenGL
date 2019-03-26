@@ -8,8 +8,8 @@
 #include <glfw/glfw3.h>
 #include <vector>
 #include "src/framework.h"
-#include "src/shader.h"
-#include "src/gl_helper.h"
+#include "src/common/shader.h"
+#include "src/common/gl_helper.h"
 
 namespace getting_started {
 

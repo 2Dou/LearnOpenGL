@@ -1,4 +1,4 @@
-#include "src/shader.h"
+#include "src/common/shader.h"
 
 Shader::~Shader() {
     deleteProgram();

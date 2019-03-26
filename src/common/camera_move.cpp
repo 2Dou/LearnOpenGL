@@ -1,8 +1,8 @@
 // Created by SelFree on 2019/03/04.
 // Copyright © 2019年 SelFree. All rights reserved.
 
-#include "src/camera_move.h"
-#include "src/camera.h"
+#include "src/common/camera.h"
+#include "src/common/camera_move.h"
 
 namespace framework {
 

@@ -2,7 +2,7 @@
 // Copyright © 2019年 SelFree. All rights reserved.
 
 #include <glm/gtc/matrix_transform.hpp>
-#include "src/camera.h"
+#include "src/common/camera.h"
 
 namespace camera {
 

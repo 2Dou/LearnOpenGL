@@ -1,8 +1,8 @@
 // Created by SelFree on 2019/03/01.
 // Copyright © 2019年 SelFree. All rights reserved.
 
-#ifndef SRC_CAMERA_H_
-#define SRC_CAMERA_H_
+#ifndef SRC_COMMON_CAMERA_H_
+#define SRC_COMMON_CAMERA_H_
 
 #include <glad/glad.h>
 #include <glfw/glfw3.h>
@@ -83,4 +83,4 @@ class Camera : public Singleton<Camera> {
 }  // namespace camera
 
 
-#endif  // SRC_CAMERA_H_
+#endif  // SRC_COMMON_CAMERA_H_

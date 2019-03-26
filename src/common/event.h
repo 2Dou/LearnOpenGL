@@ -1,8 +1,8 @@
 //  Created by SelFree on 2019/03/02.
 //  Copyright © 2019年 SelFree. All rights reserved.
 
-#ifndef SRC_EVENT_H_
-#define SRC_EVENT_H_
+#ifndef SRC_COMMON_EVENT_H_
+#define SRC_COMMON_EVENT_H_
 
 #include <glad/glad.h>
 #include <glfw/glfw3.h>
@@ -67,4 +67,4 @@ class ProcessInputDelegate<void> : public IProcessInputDelegate {
 
 }  // namespace framework
 
-#endif  // SRC_EVENT_H_
+#endif  // SRC_COMMON_EVENT_H_

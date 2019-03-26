@@ -69,7 +69,7 @@ LDFLAGS   = -L./lib -framework OpenGL -framework GLUT -framework Cocoa
 
 # The directories in which source files reside.
 # If not specified, only the current directory will be serached.
-SRCDIRS   = src src/util src/practice/**
+SRCDIRS   = src src/util src/common src/practice/**
 
 VERSION   = 0.0.1
 

@@ -34,10 +34,10 @@ void TextureTest::Init() {
     glEnableVertexAttribArray(1);
 
     texture1_.Load(util::GetResourceFilename("texture/container.jpg")
-        , GL_RGB, GL_TEXTURE0);
+        , GL_TEXTURE0);
     glActiveTexture(GL_TEXTURE1);
     texture2_.Load(util::GetResourceFilename("texture/awesomeface.png")
-        , GL_RGBA, GL_TEXTURE1);
+        , GL_TEXTURE1);
 
     shader_.Compile(util::GetResourceFilename("shaders/01_getting_started/02_texture/vertex.vs")
                     , util::GetResourceFilename("shaders/01_getting_started/02_texture/fragment.fs"));

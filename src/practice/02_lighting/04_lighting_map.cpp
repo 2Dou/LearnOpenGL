@@ -5,7 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "src/util/util.h"
-#include "src/camera.h"
+#include "src/common/camera.h"
 #include "src/practice/02_lighting/04_lighting_map.h"
 
 namespace lighting {
@@ -114,12 +114,12 @@ void LightingMap::Init() {
 
     // 纹理
     texture1_.Load(util::GetResourceFilename("texture/container2.png")
-        , GL_RGBA, GL_TEXTURE0);
+        , GL_TEXTURE0);
     glActiveTexture(GL_TEXTURE1);
     texture2_.Load(util::GetResourceFilename("texture/container2_specular.png")
-        , GL_RGBA, GL_TEXTURE1);
+        , GL_TEXTURE1);
     texture3_.Load(util::GetResourceFilename("texture/matrix.jpg")
-        , GL_RGB, GL_TEXTURE2);
+        , GL_TEXTURE2);
 
     object_vao_.Unbind();
 

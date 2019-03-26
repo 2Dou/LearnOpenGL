@@ -4,7 +4,7 @@
 #include <functional>
 #include <vector>
 
-#include "src/event.h"
+#include "src/common/event.h"
 #include "src/framework.h"
 
 #include "src/practice/01_getting_started/01_triangle.h"
@@ -31,6 +31,7 @@ int index = 0;
 
 }  // namespace main_space
 
+// 左右方向键键切换画笔
 void keyCallback(GLFWwindow* window, int key, int scan_code, int event, int d) {
     if (event != GLFW_RELEASE) {
         return;
@@ -94,20 +95,3 @@ int main() {
         framework::Instance()->Start();
     }
 }
-
-
-// struct myclass {
-//     int member;
-// };
-
-// void ctor(myclass *this_) {
-//     this_->member = 0;
-// }
-// void foo1(myclass *this_) {
-//     // 崩
-//     printf("%d\n", this_->member);
-// }
-// void foo2(myclass *this_) {
-//     // 不崩
-//     printf("Hello World!\n");
-// }

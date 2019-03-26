@@ -11,9 +11,9 @@
 #include <mutex>
 #include <string>
 
+#include "src/common/event.h"
 #include "src/util/singleton.h"
 #include "src/config.h"
-#include "src/event.h"
 
 namespace framework {
 

@@ -1,5 +1,5 @@
-#ifndef SHADER_H
-#define SHADER_H
+#ifndef SRC_COMMON_SHADER_H_
+#define SRC_COMMON_SHADER_H_
 
 #include <glad/glad.h>
 
@@ -39,4 +39,4 @@ class Shader {
     bool hasCompileErrors(GLuint shader, const std::string &type);
 };
 
-#endif  // SHADER_H
+#endif  // SRC_COMMON_SHADER_H_

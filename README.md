@@ -19,6 +19,7 @@ class Shader;  // 编译&链接 glsl，设置 uniform
 ```
 /src/
     /practice/  画笔代码
+    /common/  camera, shader, mesh, model等
     /util/  几个辅助函数代码
 /include/  头文件
 /lib/  库文件

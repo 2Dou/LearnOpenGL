@@ -5,10 +5,10 @@
 #define SRC_PRACTICE_01_GETTING_STARTED_05_CAMERA_H_
 
 #include "src/util/util.h"
-#include "src/gl_helper.h"
+#include "src/common/gl_helper.h"
 #include "src/framework.h"
-#include "src/shader.h"
-#include "src/event.h"
+#include "src/common/shader.h"
+#include "src/common/event.h"
 
 namespace getting_started {
 

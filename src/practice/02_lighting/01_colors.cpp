@@ -5,7 +5,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "src/util/util.h"
-#include "src/camera.h"
+#include "src/common/camera.h"
 #include "src/practice/02_lighting/01_colors.h"
 
 namespace lighting {

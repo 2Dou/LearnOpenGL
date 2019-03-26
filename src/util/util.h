@@ -14,7 +14,7 @@ namespace util {
 std::string GetResourceFilename(const std::string &name);
 
 // 加载纹理
-GLuint LoadTexture2D(const std::string &path, GLuint mode);
+GLuint LoadTexture2D(const std::string &path);
 
 }  // namespace util
 

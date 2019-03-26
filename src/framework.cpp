@@ -16,7 +16,7 @@
 #include <iostream>
 
 #include "src/framework.h"
-#include "src/camera.h"
+#include "src/common/camera.h"
 
 namespace framework {
 

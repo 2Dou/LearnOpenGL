@@ -3,8 +3,8 @@
 
 #pragma once
 
-#ifndef SRC_GL_HELPER_H_
-#define SRC_GL_HELPER_H_
+#ifndef SRC_COMMON_GL_HELPER_H_
+#define SRC_COMMON_GL_HELPER_H_
 
 #include <glad/glad.h>
 #include <glfw/glfw3.h>
@@ -96,11 +96,10 @@ class Texture2D {
     }
 
     GLuint Load(const std::string &path
-        , GLuint mode
         , GLenum texture_index = GL_TEXTURE0) {
         texture_index_ = texture_index;
         this->Active();
-        id_ = util::LoadTexture2D(path, mode);
+        id_ = util::LoadTexture2D(path);
         return id_;
     }
 
@@ -130,4 +129,4 @@ void VertexAttribPointer(
 
 }  // namespace gl_helper
 
-#endif  // SRC_GL_HELPER_H_
+#endif  // SRC_COMMON_GL_HELPER_H_

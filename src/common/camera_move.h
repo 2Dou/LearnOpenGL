@@ -1,11 +1,11 @@
 // Created by SelFree on 2019/03/04.
 // Copyright © 2019年 SelFree. All rights reserved.
 
-#ifndef SRC_CAMERA_MOVE_H_
-#define SRC_CAMERA_MOVE_H_
+#ifndef SRC_COMMON_CAMERA_MOVE_H_
+#define SRC_COMMON_CAMERA_MOVE_H_
 
+#include "src/common/event.h"
 #include "src/framework.h"
-#include "src/event.h"
 
 namespace framework {
 
@@ -29,4 +29,4 @@ class CameraMove : public IMouseEvent {
 }  // namespace framework
 
 
-#endif  // SRC_CAMERA_MOVE_H_
+#endif  // SRC_COMMON_CAMERA_MOVE_H_
