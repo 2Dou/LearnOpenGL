@@ -139,6 +139,9 @@ void Spotlight::Init() {
     object_shader_.SetMatrix4fv("view"
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
 
+    object_shader_.SetVec3("light.direction"
+        , glm::value_ptr(camera::Instance()->get_front()));
+
     // 光照属性
     glm::vec3 light_color(1.0f);
     object_shader_.SetVec3("light.ambient", glm::value_ptr(light_color * 0.2f));
@@ -165,12 +168,6 @@ void Spotlight::Draw() {
     texture2_.Bind(GL_TEXTURE1);
 
     object_shader_.Use();
-    object_shader_.SetVec3("view_pos"
-        , glm::value_ptr(camera::Instance()->get_position()));
-
-    object_shader_.SetVec3("light.position", glm::value_ptr(camera::Instance()->get_position()));
-    object_shader_.SetVec3("light.direction", glm::value_ptr(camera::Instance()->get_front()));
-
     object_vao_.Bind();
     glm::vec3 cubePositions[] = {
         glm::vec3(0.0f, 0.0f, 0.0f),
@@ -208,6 +205,8 @@ void Spotlight::ProcessInput() {
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
     object_shader_.SetVec3("view_pos"
         , glm::value_ptr(camera::Instance()->get_position()));
+    object_shader_.SetVec3("light.position"
+        , glm::value_ptr(camera::Instance()->get_position()));
 }
 
 
@@ -216,6 +215,8 @@ void Spotlight::Position(double xpos, double ypos) {
     object_shader_.Use();
     object_shader_.SetMatrix4fv("view"
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
+    object_shader_.SetVec3("light.direction"
+        , glm::value_ptr(camera::Instance()->get_front()));
 }
 
 void Spotlight::Scroll(double xoffset, double yoffset) {

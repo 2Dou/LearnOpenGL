@@ -152,9 +152,6 @@ void BasicLighting::Draw() {
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
     object_shader_.Use();
-    object_shader_.SetVec3("view_pos"
-        , glm::value_ptr(camera::Instance()->get_position()));
-
     object_vao_.Bind();
     glm::vec3 cubePositions[] = {
         glm::vec3(0.0f, 0.0f, 0.0f),

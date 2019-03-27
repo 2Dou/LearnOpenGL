@@ -156,9 +156,6 @@ void Materials::Draw() {
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
     object_shader_.Use();
-    object_shader_.SetVec3("view_pos"
-        , glm::value_ptr(camera::Instance()->get_position()));
-
     // 光照属性
     glm::vec3 diffuse = light_color * glm::vec3(0.5f);
     glm::vec3 ambient = diffuse * glm::vec3(0.2f);

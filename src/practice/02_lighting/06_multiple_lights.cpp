@@ -226,12 +226,6 @@ void MultipleLights::Draw() {
     texture2_.Bind(GL_TEXTURE1);
 
     object_shader_.Use();
-    object_shader_.SetVec3("view_pos"
-        , glm::value_ptr(camera::Instance()->get_position()));
-
-    object_shader_.SetVec3("spot_light.position", glm::value_ptr(camera::Instance()->get_position()));
-    object_shader_.SetVec3("spot_light.direction", glm::value_ptr(camera::Instance()->get_front()));
-
     object_vao_.Bind();
     glm::vec3 cubePositions[] = {
         glm::vec3(0.0f, 0.0f, 0.0f),
@@ -280,6 +274,8 @@ void MultipleLights::ProcessInput() {
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
     object_shader_.SetVec3("view_pos"
         , glm::value_ptr(camera::Instance()->get_position()));
+    object_shader_.SetVec3("spot_light.position"
+        , glm::value_ptr(camera::Instance()->get_position()));
 
     light_shader_.Use();
     light_shader_.SetMatrix4fv("view"
@@ -294,6 +290,8 @@ void MultipleLights::Position(double xpos, double ypos) {
     object_shader_.Use();
     object_shader_.SetMatrix4fv("view"
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
+    object_shader_.SetVec3("spot_light.direction"
+        , glm::value_ptr(camera::Instance()->get_front()));
 
     light_shader_.Use();
     light_shader_.SetMatrix4fv("view"
