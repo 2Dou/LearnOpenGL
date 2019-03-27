@@ -170,6 +170,9 @@ void PointLight::Init() {
 }
 
 void PointLight::Draw() {
+    texture1_.Bind(GL_TEXTURE0);
+    texture2_.Bind(GL_TEXTURE1);
+
     light_shader_.Use();
     glDrawArrays(GL_TRIANGLES, 0, 36);
 

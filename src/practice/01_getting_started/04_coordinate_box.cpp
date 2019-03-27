@@ -104,6 +104,9 @@ void CoordinateBox::Draw() {
     shader_.Use();
     vao_.Bind();
 
+    texture1_.Bind(GL_TEXTURE0);
+    texture2_.Bind(GL_TEXTURE1);
+
     glm::vec3 cubePositions[] = {
         glm::vec3(0.0f, 0.0f, 0.0f),
         glm::vec3(2.0f, 5.0f, -15.0f),

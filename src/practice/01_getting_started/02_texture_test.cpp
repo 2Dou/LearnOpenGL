@@ -52,6 +52,9 @@ void TextureTest::Draw() {
     shader_.Use();
     vao_.Bind();
 
+    texture1_.Bind(GL_TEXTURE0);
+    texture2_.Bind(GL_TEXTURE1);
+
     glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 

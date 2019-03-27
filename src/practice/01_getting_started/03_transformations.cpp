@@ -56,6 +56,9 @@ void Transformation::Draw() {
     shader_.Use();
     vao_.Bind();
 
+    texture1_.Bind(GL_TEXTURE0);
+    texture2_.Bind(GL_TEXTURE1);
+
     glm::mat4 trans(1.0f);
     trans = glm::rotate(trans
         , static_cast<float>(glfwGetTime())  // 旋转角度

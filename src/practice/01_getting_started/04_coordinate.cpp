@@ -68,6 +68,9 @@ void Coordinate::Draw() {
     shader_.Use();
     vao_.Bind();
 
+    texture1_.Bind(GL_TEXTURE0);
+    texture2_.Bind(GL_TEXTURE1);
+
     glm::mat4 model(1.0f);
     // model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     model = glm::rotate(model, static_cast<float>(glfwGetTime())

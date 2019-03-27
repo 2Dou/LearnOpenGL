@@ -169,6 +169,10 @@ void LightingMap::Init() {
 }
 
 void LightingMap::Draw() {
+    texture1_.Bind(GL_TEXTURE0);
+    texture2_.Bind(GL_TEXTURE1);
+    texture3_.Bind(GL_TEXTURE2);
+
     light_shader_.Use();
     glDrawArrays(GL_TRIANGLES, 0, 36);
 

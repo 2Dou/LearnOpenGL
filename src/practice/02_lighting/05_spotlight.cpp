@@ -161,6 +161,9 @@ void Spotlight::Init() {
 }
 
 void Spotlight::Draw() {
+    texture1_.Bind(GL_TEXTURE0);
+    texture2_.Bind(GL_TEXTURE1);
+
     object_shader_.Use();
     object_shader_.SetVec3("view_pos"
         , glm::value_ptr(camera::Instance()->get_position()));
