@@ -107,7 +107,6 @@ void Framework::RemoveProcessInputDelegate(IProcessInputDelegate *delegate) {
         it++) {
         if (*it == delegate) {
             process_input_delegate_list_.erase(it);
-            std::cout << "remove delegate" << std::endl;
             break;
         }
     }

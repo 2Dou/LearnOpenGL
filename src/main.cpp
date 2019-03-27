@@ -23,6 +23,8 @@
 #include "src/practice/02_lighting/05_spotlight.h"
 #include "src/practice/02_lighting/06_multiple_lights.h"
 
+#include "src/practice/03_model_loading/01_model_loading.h"
+
 namespace main_space {
 
 std::vector<framework::IPencil*> pencils;
@@ -78,6 +80,8 @@ int main() {
             new lighting::PointLight(),
             new lighting::Spotlight(),
             new lighting::MultipleLights(),
+
+            new model_loading::ModelLoading(),
         };
 
         for (auto v : main_space::pencils) {

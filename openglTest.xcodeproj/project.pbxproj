@@ -39,6 +39,10 @@
 		B16A8000224A0AAE00B2825A /* camera_move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B16A7FF8224A0AAE00B2825A /* camera_move.cpp */; };
 		B16A8001224A0AAE00B2825A /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = B16A7FFA224A0AAE00B2825A /* glad.c */; };
 		B16A8002224A0AAE00B2825A /* event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B16A7FFB224A0AAE00B2825A /* event.cpp */; };
+		B16A8005224B041A00B2825A /* model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B16A8003224B041A00B2825A /* model.cpp */; };
+		B16A8009224B043400B2825A /* mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B16A8008224B043400B2825A /* mesh.cpp */; };
+		B16A800D224B044700B2825A /* 01_model_loading.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B16A800B224B044700B2825A /* 01_model_loading.cpp */; };
+		B16A800F224B049A00B2825A /* libassimp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B16A800E224B049A00B2825A /* libassimp.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +107,12 @@
 		B16A7FF9224A0AAE00B2825A /* camera_move.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera_move.h; sourceTree = "<group>"; };
 		B16A7FFA224A0AAE00B2825A /* glad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glad.c; sourceTree = "<group>"; };
 		B16A7FFB224A0AAE00B2825A /* event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = event.cpp; sourceTree = "<group>"; };
+		B16A8003224B041A00B2825A /* model.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = model.cpp; sourceTree = "<group>"; };
+		B16A8004224B041A00B2825A /* model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
+		B16A8008224B043400B2825A /* mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mesh.cpp; sourceTree = "<group>"; };
+		B16A800B224B044700B2825A /* 01_model_loading.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = 01_model_loading.cpp; sourceTree = "<group>"; };
+		B16A800C224B044700B2825A /* 01_model_loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = 01_model_loading.h; sourceTree = "<group>"; };
+		B16A800E224B049A00B2825A /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.dylib; path = lib/libassimp.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B15D65D722267EEB0008B570 /* libglfw.3.2.dylib in Frameworks */,
+				B16A800F224B049A00B2825A /* libassimp.dylib in Frameworks */,
 				B15D65D522267DF90008B570 /* GLUT.framework in Frameworks */,
 				B15D65D122267DCF0008B570 /* OpenGL.framework in Frameworks */,
 			);
@@ -182,6 +193,7 @@
 			children = (
 				B15D65C222267BFF0008B570 /* 01_getting_started */,
 				B15D65FD222CB0220008B570 /* 02_lighting */,
+				B16A800A224B044700B2825A /* 03_model_loading */,
 			);
 			path = practice;
 			sourceTree = "<group>";
@@ -211,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				B15D65D622267EEA0008B570 /* libglfw.3.2.dylib */,
+				B16A800E224B049A00B2825A /* libassimp.dylib */,
 				B15D65D422267DF90008B570 /* GLUT.framework */,
 				B15D65D022267DCF0008B570 /* OpenGL.framework */,
 			);
@@ -243,21 +256,33 @@
 			children = (
 				B16A7FEF224A0AAE00B2825A /* gl_helper.cpp */,
 				B16A7FF0224A0AAE00B2825A /* mesh.cpp */,
-				B16A7FF1224A0AAE00B2825A /* shader.h */,
 				B16A7FF2224A0AAE00B2825A /* event.h */,
+				B16A7FFB224A0AAE00B2825A /* event.cpp */,
 				B16A7FF3224A0AAE00B2825A /* camera.cpp */,
 				B16A7FF4224A0AAE00B2825A /* camera.h */,
 				B16A7FF5224A0AAE00B2825A /* gl_helper.h */,
 				B16A7FF6224A0AAE00B2825A /* mesh.h */,
+				B16A8008224B043400B2825A /* mesh.cpp */,
+				B16A8004224B041A00B2825A /* model.h */,
+				B16A8003224B041A00B2825A /* model.cpp */,
+				B16A7FF1224A0AAE00B2825A /* shader.h */,
 				B16A7FF7224A0AAE00B2825A /* shader.cpp */,
 				B16A7FF8224A0AAE00B2825A /* camera_move.cpp */,
 				B16A7FF9224A0AAE00B2825A /* camera_move.h */,
 				B16A7FFA224A0AAE00B2825A /* glad.c */,
-				B16A7FFB224A0AAE00B2825A /* event.cpp */,
 			);
 			name = common;
 			path = src/common;
 			sourceTree = SOURCE_ROOT;
+		};
+		B16A800A224B044700B2825A /* 03_model_loading */ = {
+			isa = PBXGroup;
+			children = (
+				B16A800B224B044700B2825A /* 01_model_loading.cpp */,
+				B16A800C224B044700B2825A /* 01_model_loading.h */,
+			);
+			path = 03_model_loading;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -331,10 +356,13 @@
 			files = (
 				B16A7FE82249B66000B2825A /* 02_basic_lighting.cpp in Sources */,
 				B15D65F4222A743D0008B570 /* 04_coordinate.cpp in Sources */,
+				B16A8005224B041A00B2825A /* model.cpp in Sources */,
 				B16A7FE52249B66000B2825A /* 05_point_light.cpp in Sources */,
 				B16A7FE72249B66000B2825A /* 04_lighting_map.cpp in Sources */,
 				B16A7FFF224A0AAE00B2825A /* shader.cpp in Sources */,
+				B16A8009224B043400B2825A /* mesh.cpp in Sources */,
 				B15D65E1222694170008B570 /* 01_triangle_indexed.cpp in Sources */,
+				B16A800D224B044700B2825A /* 01_model_loading.cpp in Sources */,
 				B15D65EA2227C8290008B570 /* 02_texture_test.cpp in Sources */,
 				B15D65F3222A743D0008B570 /* 03_transformations.cpp in Sources */,
 				B15D65CA22267BFF0008B570 /* 01_triangle.cpp in Sources */,

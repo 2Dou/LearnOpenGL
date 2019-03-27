@@ -59,7 +59,7 @@
 MY_CFLAGS = -I. -I./include -ggdb
 
 # The linker options.
-MY_LIBS   =  -lglfw
+MY_LIBS   =  -lglfw -lassimp
 
 # The pre-processor options used by the cpp (man cpp for more).
 CPPFLAGS  = -Wall -O2
