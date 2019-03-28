@@ -105,19 +105,6 @@ void ModelLoading::Init() {
     glEnableVertexAttribArray(0);
     light_vao_.Unbind();
 
-    // Object
-    object_vao_.Bind();
-    // 绑定缓冲区，建立缓冲区与顶点对象联系
-    vbo_points.Bind();
-    // 向刚才绑定的缓冲区发送数据
-    vbo_points.SetData(sizeof(vertices)/sizeof(*vertices), vertices);
-    gl_helper::VertexAttribPointer<float>(0, 3, 8);
-    glEnableVertexAttribArray(0);
-    gl_helper::VertexAttribPointer<float>(1, 3, 8, 3);
-    glEnableVertexAttribArray(1);
-    gl_helper::VertexAttribPointer<float>(2, 2, 8, 6);
-    glEnableVertexAttribArray(2);
-
     model_.Load(util::GetResourceFilename("models/nanosuit/nanosuit.obj"));
 
     light_shader_.Compile(util::GetResourceFilename("shaders/03_model_loading/01_model_loading/light.vs")
@@ -194,7 +181,7 @@ void ModelLoading::Draw() {
     object_shader_.Use();
     model_.Draw(object_shader_);
 
-    object_vao_.Bind();
+    light_vao_.Bind();
     light_shader_.Use();
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }

@@ -25,6 +25,8 @@
 
 #include "src/practice/03_model_loading/01_model_loading.h"
 
+#include "src/practice/04_advanced/02_stencil.h"
+
 namespace main_space {
 
 std::vector<framework::IPencil*> pencils;
@@ -82,6 +84,8 @@ int main() {
             new lighting::MultipleLights(),
 
             new model_loading::ModelLoading(),
+
+            new advanced::Stencil(),
         };
 
         for (auto v : main_space::pencils) {
