@@ -96,19 +96,16 @@ void Camera::Init() {
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
 
-    texture1_.Load(util::GetResourceFilename("texture/container.jpg")
-        , GL_TEXTURE0);
-    glActiveTexture(GL_TEXTURE1);
-    texture2_.Load(util::GetResourceFilename("texture/awesomeface.png")
-        , GL_TEXTURE1);
+    texture1_.Load(util::GetResourceFilename("texture/container.jpg"));
+    texture2_.Load(util::GetResourceFilename("texture/awesomeface.png"));
 
     vao_.Unbind();
 
     shader_.Compile(util::GetResourceFilename("shaders/01_getting_started/04_coordinate/vertex.vs")
                     , util::GetResourceFilename("shaders/01_getting_started/04_coordinate/fragment.fs"));
     shader_.Use();  // 设置之前必须启用
-    shader_.SetInt("texture_id1", texture1_.get_texture_index() - GL_TEXTURE0);
-    shader_.SetInt("texture_id2", texture2_.get_texture_index() - GL_TEXTURE0);
+    shader_.SetInt("texture_id1", GL_TEXTURE0 - GL_TEXTURE0);
+    shader_.SetInt("texture_id2", GL_TEXTURE1 - GL_TEXTURE0);
 
     glm::mat4 projection(1.0f);
     projection = glm::perspective(glm::radians(45.0f)

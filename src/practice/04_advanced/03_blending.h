@@ -1,8 +1,8 @@
-// Created by SelFree on 2019/03/28.
+// Created by SelFree on 2019/03/29.
 // Copyright © 2019年 SelFree. All rights reserved.
 
-#ifndef SRC_PRACTICE_04_ADVANCED_02_STENCIL_H_
-#define SRC_PRACTICE_04_ADVANCED_02_STENCIL_H_
+#ifndef SRC_PRACTICE_04_ADVANCED_03_BLENDING_H_
+#define SRC_PRACTICE_04_ADVANCED_03_BLENDING_H_
 
 #include <glad/glad.h>
 
@@ -14,12 +14,11 @@
 
 namespace advanced {
 
-// 模板测试
-class Stencil : public framework::IPencil
+class Blending : public framework::IPencil
             , public framework::CameraMove {
  public:
-    Stencil();
-    ~Stencil();
+    Blending();
+    ~Blending();
 
     void Init();
     void Draw();
@@ -36,15 +35,16 @@ class Stencil : public framework::IPencil
  private:
     gl_helper::VertexArrayObject    floor_vao_;
     gl_helper::VertexArrayObject    object_vao_;
+    gl_helper::VertexArrayObject    grass_vao_;
     gl_helper::Texture2D texture1_;
     gl_helper::Texture2D texture2_;
-    Shader  stencil_shader_;
+    gl_helper::Texture2D texture3_;
     Shader  object_shader_;
 
-    framework::ProcessInputDelegate<Stencil> delegate_;
+    framework::ProcessInputDelegate<Blending> delegate_;
 };
 
 }  // namespace advanced
 
 
-#endif  // SRC_PRACTICE_04_ADVANCED_02_STENCIL_H_
+#endif  // SRC_PRACTICE_04_ADVANCED_03_BLENDING_H_

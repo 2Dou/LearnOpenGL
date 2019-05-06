@@ -10,6 +10,7 @@
 #include <glfw/glfw3.h>
 
 #include <string>
+#include <vector>
 
 #include "src/util/util.h"
 
@@ -18,24 +19,12 @@ namespace gl_helper {
 // 顶点数组对象
 class VertexArrayObject {
  public:
-    VertexArrayObject() {
-        glGenVertexArrays(1, &id_);
-    }
-    ~VertexArrayObject() {
-        Unbind();
-        glDeleteVertexArrays(1, &id_);
-    }
+    VertexArrayObject();
+    ~VertexArrayObject();
 
-    GLuint get_id() {
-        return id_;
-    }
-
-    void Bind() {
-        glBindVertexArray(id_);
-    }
-    void Unbind() {
-        glBindVertexArray(0);
-    }
+    GLuint get_id();
+    void Bind();
+    void Unbind();
 
  private:
     GLuint id_;
@@ -81,42 +70,35 @@ class VertexBufferObject {
 
 class Texture2D {
  public:
-    Texture2D() : id_(0), texture_index_(GL_TEXTURE0) {}
+    Texture2D();
+    virtual ~Texture2D();
 
-    ~Texture2D() {
-        glDeleteTextures(1, &id_);
-    }
+    GLuint get_id();
 
-    GLuint get_id() {
-        return id_;
-    }
-
-    GLenum get_texture_index() {
-        return texture_index_;
-    }
-
-    GLuint Load(const std::string &path
-        , GLenum texture_index = GL_TEXTURE0) {
-        texture_index_ = texture_index;
-        this->Active();
-        id_ = util::LoadTexture2D(path);
-        return id_;
-    }
-
-    void Bind(GLenum texture = GL_TEXTURE0) {
-        glActiveTexture(texture);
-        glBindTexture(GL_TEXTURE_2D, id_);
-    }
-
-    void Active() {
-        glActiveTexture(texture_index_);
-    }
+    virtual GLuint Load(const std::string &path);
+    virtual void Bind(GLenum texture_index = GL_TEXTURE0);
+    virtual void Delete();
 
  private:
     GLuint  id_;
-    GLenum  texture_index_;
 };
 
+
+class CubeTexture {
+ public:
+    CubeTexture();
+    virtual ~CubeTexture();
+
+    GLuint get_id();
+
+    virtual GLuint Load(const std::vector<std::string> &files);
+    virtual void Bind(GLenum texture_index = GL_TEXTURE0);
+
+    virtual void Delete();
+
+ private:
+    GLuint  id_;
+};
 
 template <typename T>
 void VertexAttribPointer(

@@ -7,6 +7,7 @@
 #include <glad/glad.h>
 #include <glfw/glfw3.h>
 #include <string>
+#include <vector>
 
 namespace util {
 
@@ -15,6 +16,8 @@ std::string GetResourceFilename(const std::string &name);
 
 // 加载纹理
 GLuint LoadTexture2D(const std::string &path);
+
+GLuint LoadCubeTexture(const std::vector<std::string> &files);
 
 }  // namespace util
 

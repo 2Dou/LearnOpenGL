@@ -39,7 +39,7 @@ void Stencil::Attached() {
 void Stencil::Dettached() {
     // 关闭模板缓冲
     glDisable(GL_STENCIL_TEST);
-    glStencilOp(GL_KEEP, GL_REPLACE, GL_REPLACE);
+    glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
 
     glfwSetInputMode(framework::Instance()->get_window()
         , GLFW_CURSOR, GLFW_CURSOR_NORMAL);
@@ -126,10 +126,8 @@ void Stencil::Init() {
     glEnableVertexAttribArray(1);
     floor_vao_.Unbind();
 
-    texture1_.Load(util::GetResourceFilename("texture/container.jpg")
-        , GL_TEXTURE0);
-    texture2_.Load(util::GetResourceFilename("texture/metal.png")
-        , GL_TEXTURE1);
+    texture1_.Load(util::GetResourceFilename("texture/container.jpg"));
+    texture2_.Load(util::GetResourceFilename("texture/metal.png"));
 
     object_shader_.Compile(util::GetResourceFilename("shaders/04_advanced/02_stencil/object.vs")
                     , util::GetResourceFilename("shaders/04_advanced/02_stencil/object.fs"));
@@ -145,7 +143,7 @@ void Stencil::Init() {
     object_shader_.SetMatrix4fv("projection", glm::value_ptr(projection));
     object_shader_.SetMatrix4fv("view"
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
-    object_shader_.SetInt("texture1", 0);
+    object_shader_.SetInt("texture1", GL_TEXTURE0 - GL_TEXTURE0);
 
     stencil_shader_.Use();
     stencil_shader_.SetMatrix4fv("projection", glm::value_ptr(projection));

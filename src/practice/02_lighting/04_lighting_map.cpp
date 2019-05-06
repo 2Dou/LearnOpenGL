@@ -113,13 +113,9 @@ void LightingMap::Init() {
     glEnableVertexAttribArray(2);
 
     // 纹理
-    texture1_.Load(util::GetResourceFilename("texture/container2.png")
-        , GL_TEXTURE0);
-    glActiveTexture(GL_TEXTURE1);
-    texture2_.Load(util::GetResourceFilename("texture/container2_specular.png")
-        , GL_TEXTURE1);
-    texture3_.Load(util::GetResourceFilename("texture/matrix.jpg")
-        , GL_TEXTURE2);
+    texture1_.Load(util::GetResourceFilename("texture/container2.png"));
+    texture2_.Load(util::GetResourceFilename("texture/container2_specular.png"));
+    texture3_.Load(util::GetResourceFilename("texture/matrix.jpg"));
 
     object_vao_.Unbind();
 
@@ -162,9 +158,9 @@ void LightingMap::Init() {
     object_shader_.SetVec3("light.diffuse", glm::value_ptr(light_color * 0.5f));
     object_shader_.SetVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
-    object_shader_.SetInt("material.diffuse", texture1_.get_texture_index() - GL_TEXTURE0);
-    object_shader_.SetInt("material.specular", texture2_.get_texture_index() - GL_TEXTURE0);
-    object_shader_.SetInt("material.emission", texture3_.get_texture_index() - GL_TEXTURE0);
+    object_shader_.SetInt("material.diffuse", GL_TEXTURE0 - GL_TEXTURE0);
+    object_shader_.SetInt("material.specular", GL_TEXTURE1 - GL_TEXTURE0);
+    object_shader_.SetInt("material.emission", GL_TEXTURE2 - GL_TEXTURE0);
     object_shader_.SetFloat("material.shininess", 32.0f);
 }
 

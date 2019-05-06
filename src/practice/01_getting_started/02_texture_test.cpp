@@ -33,17 +33,14 @@ void TextureTest::Init() {
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
 
-    texture1_.Load(util::GetResourceFilename("texture/container.jpg")
-        , GL_TEXTURE0);
-    glActiveTexture(GL_TEXTURE1);
-    texture2_.Load(util::GetResourceFilename("texture/awesomeface.png")
-        , GL_TEXTURE1);
+    texture1_.Load(util::GetResourceFilename("texture/container.jpg"));
+    texture2_.Load(util::GetResourceFilename("texture/awesomeface.png"));
 
     shader_.Compile(util::GetResourceFilename("shaders/01_getting_started/02_texture/vertex.vs")
                     , util::GetResourceFilename("shaders/01_getting_started/02_texture/fragment.fs"));
     shader_.Use();  // 设置之前必须启用
-    shader_.SetInt("texture_id1", texture1_.get_texture_index() - GL_TEXTURE0);
-    shader_.SetInt("texture_id2", texture2_.get_texture_index() - GL_TEXTURE0);
+    shader_.SetInt("texture_id1", GL_TEXTURE0 - GL_TEXTURE0);
+    shader_.SetInt("texture_id2", GL_TEXTURE1 - GL_TEXTURE0);
 
     vao_.Unbind();
 }

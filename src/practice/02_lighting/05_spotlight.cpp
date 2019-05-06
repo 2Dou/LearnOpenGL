@@ -114,11 +114,8 @@ void Spotlight::Init() {
     glEnableVertexAttribArray(2);
 
     // 纹理
-    texture1_.Load(util::GetResourceFilename("texture/container2.png")
-        , GL_TEXTURE0);
-    glActiveTexture(GL_TEXTURE1);
-    texture2_.Load(util::GetResourceFilename("texture/container2_specular.png")
-        , GL_TEXTURE1);
+    texture1_.Load(util::GetResourceFilename("texture/container2.png"));
+    texture2_.Load(util::GetResourceFilename("texture/container2_specular.png"));
 
     object_vao_.Unbind();
 
@@ -156,10 +153,8 @@ void Spotlight::Init() {
     object_shader_.SetFloat("light.outer_cut_off"
         , glm::cos(glm::radians(17.5f)));
 
-    object_shader_.SetInt("material.diffuse"
-        , texture1_.get_texture_index() - GL_TEXTURE0);
-    object_shader_.SetInt("material.specular"
-        , texture2_.get_texture_index() - GL_TEXTURE0);
+    object_shader_.SetInt("material.diffuse", GL_TEXTURE0 - GL_TEXTURE0);
+    object_shader_.SetInt("material.specular", GL_TEXTURE1 - GL_TEXTURE0);
     object_shader_.SetFloat("material.shininess", 32.0f);
 }
 

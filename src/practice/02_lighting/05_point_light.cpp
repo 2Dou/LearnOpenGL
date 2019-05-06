@@ -113,11 +113,8 @@ void PointLight::Init() {
     glEnableVertexAttribArray(2);
 
     // 纹理
-    texture1_.Load(util::GetResourceFilename("texture/container2.png")
-        , GL_TEXTURE0);
-    glActiveTexture(GL_TEXTURE1);
-    texture2_.Load(util::GetResourceFilename("texture/container2_specular.png")
-        , GL_TEXTURE1);
+    texture1_.Load(util::GetResourceFilename("texture/container2.png"));
+    texture2_.Load(util::GetResourceFilename("texture/container2_specular.png"));
 
     object_vao_.Unbind();
 
@@ -164,8 +161,8 @@ void PointLight::Init() {
     object_shader_.SetFloat("light.linear", 0.09f);
     object_shader_.SetFloat("light.quadratic", 0.032f);
 
-    object_shader_.SetInt("material.diffuse", texture1_.get_texture_index() - GL_TEXTURE0);
-    object_shader_.SetInt("material.specular", texture2_.get_texture_index() - GL_TEXTURE0);
+    object_shader_.SetInt("material.diffuse", GL_TEXTURE0 - GL_TEXTURE0);
+    object_shader_.SetInt("material.specular", GL_TEXTURE1 - GL_TEXTURE0);
     object_shader_.SetFloat("material.shininess", 32.0f);
 }
 

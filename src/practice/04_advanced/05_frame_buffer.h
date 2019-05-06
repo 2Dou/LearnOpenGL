@@ -1,8 +1,8 @@
-// Created by SelFree on 2019/03/28.
+// Created by SelFree on 2019/04/16.
 // Copyright © 2019年 SelFree. All rights reserved.
 
-#ifndef SRC_PRACTICE_04_ADVANCED_02_STENCIL_H_
-#define SRC_PRACTICE_04_ADVANCED_02_STENCIL_H_
+#ifndef SRC_PRACTICE_04_ADVANCED_05_FRAME_BUFFER_H_
+#define SRC_PRACTICE_04_ADVANCED_05_FRAME_BUFFER_H_
 
 #include <glad/glad.h>
 
@@ -14,12 +14,11 @@
 
 namespace advanced {
 
-// 模板测试
-class Stencil : public framework::IPencil
+class FrameBuffer : public framework::IPencil
             , public framework::CameraMove {
  public:
-    Stencil();
-    ~Stencil();
+    FrameBuffer();
+    ~FrameBuffer();
 
     void Init();
     void Draw();
@@ -36,15 +35,22 @@ class Stencil : public framework::IPencil
  private:
     gl_helper::VertexArrayObject    floor_vao_;
     gl_helper::VertexArrayObject    object_vao_;
-    gl_helper::Texture2D texture1_;
-    gl_helper::Texture2D texture2_;
-    Shader  stencil_shader_;
+    gl_helper::VertexArrayObject    grass_vao_;
+    gl_helper::Texture2D    texture1_;
+    gl_helper::Texture2D    texture2_;
+    gl_helper::Texture2D    texture3_;
     Shader  object_shader_;
 
-    framework::ProcessInputDelegate<Stencil> delegate_;
+    GLuint  fbo_;
+    GLuint  rbo_;
+    GLuint  screen_texture_;
+    gl_helper::VertexArrayObject    screen_vao_;
+    Shader  screen_shader_;
+
+    framework::ProcessInputDelegate<FrameBuffer> delegate_;
 };
 
 }  // namespace advanced
 
 
-#endif  // SRC_PRACTICE_04_ADVANCED_02_STENCIL_H_
+#endif  // SRC_PRACTICE_04_ADVANCED_05_FRAME_BUFFER_H_

@@ -23,6 +23,9 @@ ModelLoading::~ModelLoading() {
 }
 
 void ModelLoading::Attached() {
+    // 开启面剔除
+    glEnable(GL_CULL_FACE);
+
     // 隐藏光标
     glfwSetInputMode(framework::Instance()->get_window()
         , GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -36,6 +39,8 @@ void ModelLoading::Attached() {
 }
 
 void ModelLoading::Dettached() {
+    glDisable(GL_CULL_FACE);
+
     glfwSetInputMode(framework::Instance()->get_window()
         , GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 
