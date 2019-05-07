@@ -62,49 +62,38 @@ mesh::Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene) {
     for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
         mesh::Vertex vertex;
 
-        // we declare a placeholder vector
-        // since assimp uses its own vector class
-        // that doesn't directly convert to glm's vec3 class
-        // so we transfer the data to this placeholder glm::vec3 first.
-        glm::vec3 vector;
         // positions
-        vector.x = mesh->mVertices[i].x;
-        vector.y = mesh->mVertices[i].y;
-        vector.z = mesh->mVertices[i].z;
-        vertex.Position = vector;
+        vertex.Position.x = mesh->mVertices[i].x;
+        vertex.Position.y = mesh->mVertices[i].y;
+        vertex.Position.z = mesh->mVertices[i].z;
         // normals
-        vector.x = mesh->mNormals[i].x;
-        vector.y = mesh->mNormals[i].y;
-        vector.z = mesh->mNormals[i].z;
-        vertex.Normal = vector;
+        vertex.Normal.x = mesh->mNormals[i].x;
+        vertex.Normal.y = mesh->mNormals[i].y;
+        vertex.Normal.z = mesh->mNormals[i].z;
 
         // texture coordinates
         // does the mesh contain texture coordinates?
         if (mesh->mTextureCoords[0]) {
-            glm::vec2 vec;
             // a vertex can contain up to 8 different texture coordinates.
             // We thus make the assumption that we won't
             // use models where a vertex can have multiple
             // texture coordinates so we always take the first set (0).
-            vec.x = mesh->mTextureCoords[0][i].x;
-            vec.y = mesh->mTextureCoords[0][i].y;
-            vertex.TexCoords = vec;
+            vertex.TexCoords.x = mesh->mTextureCoords[0][i].x;
+            vertex.TexCoords.y = mesh->mTextureCoords[0][i].y;
         } else {
-            vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+            vertex.TexCoords.x = vertex.TexCoords.y = 0.0f;
         }
         // tangent
         if (mesh->mTangents) {
-            vector.x = mesh->mTangents[i].x;
-            vector.y = mesh->mTangents[i].y;
-            vector.z = mesh->mTangents[i].z;
-            vertex.Tangent = vector;
+            vertex.Tangent.x = mesh->mTangents[i].x;
+            vertex.Tangent.y = mesh->mTangents[i].y;
+            vertex.Tangent.z = mesh->mTangents[i].z;
         }
         // bitangent
         if (mesh->mBitangents) {
-            vector.x = mesh->mBitangents[i].x;
-            vector.y = mesh->mBitangents[i].y;
-            vector.z = mesh->mBitangents[i].z;
-            vertex.Bitangent = vector;
+            vertex.Bitangent.x = mesh->mBitangents[i].x;
+            vertex.Bitangent.y = mesh->mBitangents[i].y;
+            vertex.Bitangent.z = mesh->mBitangents[i].z;
         }
         vertices.push_back(vertex);
     }
@@ -148,14 +137,19 @@ mesh::Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene) {
     // 3. normal maps
     std::vector<mesh::Texture> normalMaps
         = loadMaterialTextures(material
-            , aiTextureType_HEIGHT, "texture_normal");
+            , aiTextureType_NORMALS, "texture_normal");
     textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
 
     // 4. height maps
     std::vector<mesh::Texture> heightMaps
         = loadMaterialTextures(material
-            , aiTextureType_AMBIENT, "texture_height");
+            , aiTextureType_HEIGHT, "texture_height");
     textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
+
+    std::vector<mesh::Texture> reflectionMap
+        = loadMaterialTextures(material
+            , aiTextureType_AMBIENT, "texture_ambient");
+    textures.insert(textures.end(), reflectionMap.begin(), reflectionMap.end());
 
     // return a mesh object created from the extracted mesh data
     return mesh::Mesh(vertices, indices, textures);
@@ -175,7 +169,7 @@ std::vector<mesh::Texture> Model::loadMaterialTextures(
         // continue to next iteration: skip loading a new texture
         bool skip = false;
         for (unsigned int j = 0; j < textures_loaded.size(); j++) {
-            if (textures_loaded[j].path.compare(str.C_Str()) == 0) {
+            if (std::strcmp(textures_loaded[j].path.data(), str.C_Str()) == 0) {
                 textures.push_back(textures_loaded[j]);
 
                 // a texture with the same filepath has already been loaded,

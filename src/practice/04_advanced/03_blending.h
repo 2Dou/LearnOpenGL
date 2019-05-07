@@ -10,7 +10,6 @@
 #include "src/common/shader.h"
 #include "src/common/gl_helper.h"
 #include "src/common/camera_move.h"
-#include "src/common/model.h"
 
 namespace advanced {
 

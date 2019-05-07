@@ -5,7 +5,6 @@ in vec2 TexCoords;
 in vec3 Normal;
 in vec3 FragPos;
 
-uniform vec3 object_color;
 uniform vec3 view_pos;
 
 uniform sampler2D texture_diffuse1;

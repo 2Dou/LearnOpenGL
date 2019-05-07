@@ -26,6 +26,9 @@
 #include "src/practice/03_model_loading/01_model_loading.h"
 
 #include "src/practice/04_advanced/02_stencil.h"
+#include "src/practice/04_advanced/03_blending.h"
+#include "src/practice/04_advanced/05_frame_buffer.h"
+#include "src/practice/04_advanced/06_cubemaps.h"
 
 namespace main_space {
 
@@ -86,6 +89,9 @@ int main() {
             new model_loading::ModelLoading(),
 
             new advanced::Stencil(),
+            new advanced::Blending(),
+            new advanced::FrameBuffer(),
+            new advanced::Cubemaps(),
         };
 
         for (auto v : main_space::pencils) {

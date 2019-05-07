@@ -21,9 +21,6 @@ Blending::~Blending() {
 }
 
 void Blending::Attached() {
-    // 启用面剔除
-    glEnable(GL_CULL_FACE);
-
     // 启用混合
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -41,7 +38,6 @@ void Blending::Attached() {
 }
 
 void Blending::Dettached() {
-    glDisable(GL_CULL_FACE);
     glDisable(GL_BLEND);
 
     glfwSetInputMode(framework::Instance()->get_window()
@@ -170,14 +166,8 @@ void Blending::Init() {
 }
 
 void Blending::Draw() {
-    texture2_.Bind(GL_TEXTURE0);
-
-    // 画地板
-    floor_vao_.Bind();
-    object_shader_.Use();
-    object_shader_.SetMatrix4fv("model", glm::value_ptr(glm::mat4(1.0f)));
-    glDrawArrays(GL_TRIANGLES, 0, 6);
-
+    // 画箱子时启用面剔除
+    glEnable(GL_CULL_FACE);
     // 画第一个箱子
     object_vao_.Bind();
     texture1_.Bind(GL_TEXTURE0);
@@ -202,6 +192,17 @@ void Blending::Draw() {
     vegetation.push_back(glm::vec3(0.0f, 0.0f, 0.7f));
     vegetation.push_back(glm::vec3(1.5f, 0.0f, 0.51f));
 
+    // 画草和地板时不启用面剔除
+    glDisable(GL_CULL_FACE);
+
+    // 画地板
+    texture2_.Bind(GL_TEXTURE0);
+    floor_vao_.Bind();
+    object_shader_.Use();
+    object_shader_.SetMatrix4fv("model", glm::value_ptr(glm::mat4(1.0f)));
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
+    // 画草
     grass_vao_.Bind();
     texture3_.Bind(GL_TEXTURE0);
     for (size_t i = 0; i < vegetation.size(); i++) {
@@ -220,10 +221,6 @@ void Blending::ProcessInput() {
     object_shader_.Use();
     object_shader_.SetMatrix4fv("view"
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
-    object_shader_.SetVec3("view_pos"
-        , glm::value_ptr(camera::Instance()->get_position()));
-    object_shader_.SetVec3("spot_light.position"
-        , glm::value_ptr(camera::Instance()->get_position()));
 }
 
 
@@ -232,8 +229,6 @@ void Blending::Position(double xpos, double ypos) {
     object_shader_.Use();
     object_shader_.SetMatrix4fv("view"
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
-    object_shader_.SetVec3("spot_light.direction"
-        , glm::value_ptr(camera::Instance()->get_front()));
 }
 
 void Blending::Scroll(double xoffset, double yoffset) {
@@ -246,7 +241,6 @@ void Blending::Scroll(double xoffset, double yoffset) {
         , 0.1f, 100.0f);
 
     object_shader_.Use();
-    object_shader_.SetMatrix4fv("projection"
-        , glm::value_ptr(projection));
+    object_shader_.SetMatrix4fv("projection", glm::value_ptr(projection));
 }
 }  // namespace advanced

@@ -69,7 +69,7 @@ GLuint CubeTexture::Load(const std::vector<std::string> &files) {
 
 void CubeTexture::Bind(GLenum texture_index) {
     glActiveTexture(texture_index);
-    glBindTexture(GL_TEXTURE_2D, id_);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, id_);
 }
 
 void CubeTexture::Delete() {

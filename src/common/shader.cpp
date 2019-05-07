@@ -35,7 +35,10 @@ bool Shader::Compile(const std::string &vertex_file
         vertex_code   = s0.str();
         fragment_code = s1.str();
     } catch (std::ifstream::failure e) {
-        std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
+        std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ"
+            << vertex_file << '\n'
+            << fragment_file
+            << std::endl;
         return false;
     }
 

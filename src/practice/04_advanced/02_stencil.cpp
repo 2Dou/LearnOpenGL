@@ -214,16 +214,9 @@ void Stencil::ProcessInput() {
     object_shader_.Use();
     object_shader_.SetMatrix4fv("view"
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
-    object_shader_.SetVec3("view_pos"
-        , glm::value_ptr(camera::Instance()->get_position()));
-    object_shader_.SetVec3("spot_light.position"
-        , glm::value_ptr(camera::Instance()->get_position()));
-
     stencil_shader_.Use();
     stencil_shader_.SetMatrix4fv("view"
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
-    stencil_shader_.SetVec3("view_pos"
-        , glm::value_ptr(camera::Instance()->get_position()));
 }
 
 
@@ -232,8 +225,6 @@ void Stencil::Position(double xpos, double ypos) {
     object_shader_.Use();
     object_shader_.SetMatrix4fv("view"
         , glm::value_ptr(camera::Instance()->GetViewMatrix()));
-    object_shader_.SetVec3("spot_light.direction"
-        , glm::value_ptr(camera::Instance()->get_front()));
 
     stencil_shader_.Use();
     stencil_shader_.SetMatrix4fv("view"
@@ -250,11 +241,9 @@ void Stencil::Scroll(double xoffset, double yoffset) {
         , 0.1f, 100.0f);
 
     object_shader_.Use();
-    object_shader_.SetMatrix4fv("projection"
-        , glm::value_ptr(projection));
+    object_shader_.SetMatrix4fv("projection", glm::value_ptr(projection));
 
     stencil_shader_.Use();
-    stencil_shader_.SetMatrix4fv("projection"
-        , glm::value_ptr(projection));
+    stencil_shader_.SetMatrix4fv("projection", glm::value_ptr(projection));
 }
 }  // namespace advanced

@@ -60,8 +60,8 @@ void Triangle::Init() {
 }
 
 void Triangle::Draw() {
-    shader_.Use();
     vao_.Bind();
+    shader_.Use();
     glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
